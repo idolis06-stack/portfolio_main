@@ -26,15 +26,39 @@
       height:100vh;
     }
 
+    /* ✔ אפקט Glass Blur */
     .contact{
       background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       border:1px solid rgba(255,255,255,0.1);
       border-radius:var(--radius);
       padding:32px 40px;
-      max-width:340px;
+      max-width:360px;
       text-align:center;
       box-shadow:0 8px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(18px); /* NEW */
+      
+      /* ✔ אנימציית כניסה */
+      transform: scale(0.95);
+      opacity:0;
+      animation: pop .6s ease forwards;
     }
+
+    @keyframes pop{
+      to{
+        transform: scale(1);
+        opacity:1;
+      }
+    }
+
+    .logo{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      overflow:hidden;
+      margin:0 auto 20px;
+      border:2px solid rgba(255,255,255,0.15);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;}
 
     h2{margin-top:0;color:var(--accent-light)}
     p{color:#cdd7e0;font-size:14px;margin:8px 0 24px}
@@ -64,32 +88,82 @@
     .btn-wa{background:#25d366;}
 
     .btnlink svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8}
+
+    /* Fancy email hover reveal */
+    .email-box{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:12px;
+      border-radius:12px;
+      margin-top:6px;
+      font-size:13px;
+      opacity:0;
+      height:0;
+      overflow:hidden;
+      transition:all .3s ease;
+    }
+    .btn-mail:hover + .email-box{
+      opacity:1;
+      height:auto;
+      margin-bottom:10px;
+    }
+
+    /* ✔ תחתית */
+    .footer{
+      font-size:11px;
+      color:#6e7a8a;
+      opacity:.6;
+      margin-top:25px;
+    }
+
   </style>
 </head>
 <body>
   <div class="contact">
+
+    <div class="logo">
+      <img src="524705844_17869241187411495_2786598028850442713_n.jpg" alt="Lis Logo" />
+    </div>
+
     <h2>צור קשר</h2>
     <p>מוזמנים לפנות אליי בכל אחד הערוצים הבאים:</p>
 
+    <!-- ✔ שעות פעילות -->
+    <p style="font-size:13px;color:#9cabba;margin-top:-10px;margin-bottom:20px;">
+      זמין א׳–ה׳ • 9:00–20:00
+    </p>
+
     <div class="links">
+
       <!-- Email -->
-      <a class="btnlink btn-mail" href="mailto:idolis654@gmail.com">
+      <a class="btnlink btn-mail" href="#" onclick="navigator.clipboard.writeText('idolis654@gmail.com'); alert('המייל הועתק!'); return false;">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
-        מייל
+        העתקת מייל
       </a>
 
       <!-- Instagram -->
-      <a class="btnlink btn-insta" href="https://www.instagram.com/lis_z111?ref=malloy.sg" target="_blank">
+      <a class="btnlink btn-insta" href="https://www.instagram.com/lis.w0rk/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>
         אינסטגרם
       </a>
 
-      <!-- WhatsApp with message -->
+      <!-- WhatsApp -->
       <a class="btnlink btn-wa" href="https://wa.me/972542537273?text=היי%20ליס!%20ראיתי%20את%20האתר%20שלך%20והייתי%20רוצה%20לדבר%20על%20עריכת%20וידאו" target="_blank">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 10.5c.3 2.2 3.2 4.6 4.9 5 .6.1 1.3-.2 1.7-.7l.7-.8c.2-.2.2-.6 0-.8l-1.2-1.1c-.2-.2-.6-.2-.8 0l-.5.6a.6.6 0 0 1-.7.2c-.9-.4-2.1-1.5-2.5-2.4a.6.6 0 0 1 .1-.7l.6-.6c.2-.2.2-.6 0-.8l-1.3-1.2c-.2-.2-.6-.2-.8 0l-.7.7c-.4.4-.6 1-.5 1.6Z" stroke="currentColor"/></svg>
         WhatsApp
       </a>
+
+      <!-- Phone Call -->
+      <a class="btnlink" style="background:#146c94;" href="tel:+972542537273">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 4.6c.3-1 1.3-1.6 2.3-1.3l1.8.6c.9.3 1.5 1.2 1.4 2.2l-.2 1.4c-.1.7.2 1.4.8 1.8l2.2 1.4c.6.4 1.3.4 1.9.1l1.2-.6c.9-.5 2-.2 2.5.7l1 1.7c.5.9.3 2-.5 2.6l-1.6 1.2c-1.4 1-3.3 1.2-4.9.5-3.2-1.4-6.4-4.3-8.2-7.2-1-1.7-.8-3.8.6-5l1.4-1.3Z" stroke="currentColor"/></svg>
+        שיחה
+      </a>
+
     </div>
+
+    <!-- ✔ תחתית -->
+    <p class="footer">© Lis — All Rights Reserved</p>
+
   </div>
 </body>
 </html>
